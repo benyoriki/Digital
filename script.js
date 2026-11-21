@@ -16,10 +16,17 @@
 })();
 /* ============ KONFIGURASI — EDIT DI SINI ============ */
 const CONFIG = {
-  brand: "RAJIP DIGITAL",
-  name: "Rajip",
-  whatsapp: "6282311511550", // satu-satunya tempat nomor WhatsApp
-  defaultMsg: "Halo Rajip, saya tertarik dengan jasa pembuatan website/sistem. Saya ingin konsultasi mengenai kebutuhan project saya.",
+  brand: "RAJIB DIGITAL",
+  name: "Rajib",
+  whatsapp: "6287874637574", // satu-satunya tempat nomor WhatsApp
+  defaultMsg: "Halo Rajib, saya tertarik dengan jasa pembuatan website/sistem. Saya ingin konsultasi mengenai kebutuhan project saya.",
+  why: [
+    ["bolt", "Cepat & Ringan", "Dibuat ringan agar cepat dibuka, bahkan di koneksi biasa dan perangkat lama."],
+    ["phone", "Responsive HP & PC", "Tampilan rapi dan nyaman di HP, tablet, maupun desktop."],
+    ["download", "Bisa Di-install (PWA)", "Pasang di layar utama HP seperti aplikasi, tanpa lewat toko aplikasi."],
+    ["chat", "Konsultasi Gratis", "Ceritakan ide Anda lewat WhatsApp, lalu saya bantu rumuskan solusinya."]
+  ],
+  photo: "", // isi mis. "assets/profile.jpg" untuk menampilkan foto sendiri di bagian Tentang (kosong = kartu brand)
   experience: "", // contoh: "Pengalaman 3 tahun membangun website & sistem untuk UMKM." (kosong = disembunyikan)
   // Kosongkan string jika belum ada; kartu kontak yang kosong otomatis tidak ditampilkan
   contacts: { email: "", instagram: "", facebook: "", github: "", website: "" },
@@ -66,6 +73,10 @@ const CONFIG = {
     ["Support", "Bantuan dan pengembangan lanjutan sesuai kesepakatan."]
   ]
 };
+/* ============ PWA: service worker + prompt install ============ */
+let deferredInstall = null;
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferredInstall = e; document.dispatchEvent(new Event("pwa-ready")); });
+if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
 /* ============ KODE ============ */
 const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const S = (p, f) => `<svg viewBox="0 0 24 24" ${f ? 'fill="currentColor"' : 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'} aria-hidden="true">${p}</svg>`;
@@ -83,6 +94,7 @@ const ICON = {
   check: '<path d="M5 13l4 4L19 7"/>', ext: '<path d="M7 17L17 7M8 7h9v9"/>', play: '<path d="M7 4l13 8-13 8z"/>', img: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/>',
   mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>', instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/>',
   facebook: '<path d="M15 3h-2a4 4 0 0 0-4 4v3H6v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"/>',
+  bolt: '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>', phone: '<rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/>', download: '<path d="M12 3v11M7 10l5 5 5-5M5 20h14"/>',
   github: '<path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>'
 };
 const WA_PATH = '<path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.8 9.4 7.3c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 2 3 4.7 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.7 0-3.3-.5-4.7-1.3l-.3-.2-3.5 1.1 1.1-3.4-.2-.3C3.5 14.5 3 13.3 3 12c0-4.4 3.6-8 9-8s9 3.6 9 8-4.6 9-9 9z"/>';
@@ -110,14 +122,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const items = [...CONFIG.skills, ...cats];
   $("#track").innerHTML = [0, 1].map(() => `<span>${items.map(esc).join("</span><span>")}</span>`).join("");
 
+  /* Keunggulan */
+  $("#why").innerHTML = CONFIG.why.map((w, i) => `<li class="spot rv" style="--d:${i * .06}s"><span class="ic">${ico(w[0])}</span><h3>${esc(w[1])}</h3><p>${esc(w[2])}</p></li>`).join("");
+
   /* Layanan (bento) */
-  $("#svc").innerHTML = CONFIG.services.map((s, i) => `<article class="spot rv" style="--d:${i * .06}s"><div class="ic">${ico(s.icon)}</div><div class="tx"><h3>${esc(s.title)}</h3><p>${esc(s.desc)}</p></div><ul>${s.perks.map(p => `<li>${ico("check")}${esc(p)}</li>`).join("")}</ul><a class="lnk" target="_blank" rel="noopener" href="${waLink(`Halo Rajip, saya tertarik dengan jasa ${s.title}. Boleh konsultasi?`)}">Konsultasi via WhatsApp ${ico("arrow")}</a></article>`).join("");
+  $("#svc").innerHTML = CONFIG.services.map((s, i) => `<article class="spot rv" style="--d:${i * .06}s"><div class="ic">${ico(s.icon)}</div><div class="tx"><h3>${esc(s.title)}</h3><p>${esc(s.desc)}</p></div><ul>${s.perks.map(p => `<li>${ico("check")}${esc(p)}</li>`).join("")}</ul><a class="lnk" target="_blank" rel="noopener" href="${waLink(`Halo Rajib, saya tertarik dengan jasa ${s.title}. Boleh konsultasi?`)}">Konsultasi via WhatsApp ${ico("arrow")}</a></article>`).join("");
 
   /* Portfolio */
   const filters = ["Semua", ...cats];
   const count = f => f === "Semua" ? P.length : P.filter(p => p.filter === f).length;
   $("#flt").innerHTML = filters.map((f, i) => `<button class="chip${i ? "" : " on"}" aria-pressed="${!i}" data-f="${esc(f)}">${esc(f)}<b>${count(f)}</b></button>`).join("");
-  $("#grid").innerHTML = P.map((p, i) => `<article class="card spot proj" data-f="${esc(p.filter)}" style="--accent:${p.accent}"><div class="shotw"><div class="sbar"><s></s><s></s><s></s><span>${esc(hostOf(p.url))}</span></div><button class="shot" data-i="${i}" aria-label="Lihat detail ${esc(p.title)}"><img src="${esc(p.img)}" alt="Screenshot website ${esc(p.title)}" width="800" height="500" loading="lazy" decoding="async"></button></div><div class="pb"><div class="pcat"><i></i>${esc(p.cat)}</div><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><div class="chips">${p.feat.map(t => `<span>${esc(t)}</span>`).join("")}</div><div class="pact"><button class="btn sm wa" data-i="${i}">${ico("play")}Preview</button><a class="btn sm ghost" href="${esc(p.url)}" target="_blank" rel="noopener">${ico("ext")}Buka Website</a></div><a class="pwa" target="_blank" rel="noopener" href="${waLink(`Halo Rajip, saya tertarik bikin website mirip ${p.title}. Boleh konsultasi?`)}"><span>Mau seperti ini?</span><b>Chat Sekarang →</b></a></div></article>`).join("");
+  $("#grid").innerHTML = P.map((p, i) => `<article class="card spot proj" data-f="${esc(p.filter)}" style="--accent:${p.accent}"><div class="shotw"><div class="sbar"><s></s><s></s><s></s><span>${esc(hostOf(p.url))}</span></div><button class="shot" data-i="${i}" aria-label="Lihat detail ${esc(p.title)}"><img src="${esc(p.img)}" alt="Screenshot website ${esc(p.title)}" width="800" height="500" loading="lazy" decoding="async"></button></div><div class="pb"><div class="pcat"><i></i>${esc(p.cat)}</div><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><div class="chips">${p.feat.map(t => `<span>${esc(t)}</span>`).join("")}</div><div class="pact"><button class="btn sm wa" data-i="${i}">${ico("play")}Preview</button><a class="btn sm ghost" href="${esc(p.url)}" target="_blank" rel="noopener">${ico("ext")}Buka Website</a></div><a class="pwa" target="_blank" rel="noopener" href="${waLink(`Halo Rajib, saya tertarik bikin website mirip ${p.title}. Boleh konsultasi?`)}"><span>Mau seperti ini?</span><b>Chat Sekarang →</b></a></div></article>`).join("");
   const cards = $$("#grid .proj"), LIMIT = 6;
   let flt = "Semua", expanded = false, first = true;
   const matches = () => P.map((p, i) => i).filter(i => flt === "Semua" || P[i].filter === flt);
@@ -145,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dlg.style.setProperty("--accent", p.accent);
     $("#dl").textContent = p.cat; $("#dt").textContent = p.title; $("#dd").textContent = p.desc;
     $("#dchips").innerHTML = p.feat.map(t => `<span style="--accent:${p.accent}">${esc(t)}</span>`).join("");
-    $("#dbtn").innerHTML = `<button class="btn sm wa" id="dlive">${ico("play")}Preview Langsung</button><a class="btn sm ghost" href="${esc(p.url)}" target="_blank" rel="noopener">${ico("ext")}Buka Website</a><a class="btn sm ghost" target="_blank" rel="noopener" href="${waLink(`Halo Rajip, saya tertarik bikin website mirip ${p.title}. Boleh konsultasi?`)}">${ico("whatsapp")}Mau seperti ini?</a>`;
+    $("#dbtn").innerHTML = `<button class="btn sm wa" id="dlive">${ico("play")}Preview Langsung</button><a class="btn sm ghost" href="${esc(p.url)}" target="_blank" rel="noopener">${ico("ext")}Buka Website</a><a class="btn sm ghost" target="_blank" rel="noopener" href="${waLink(`Halo Rajib, saya tertarik bikin website mirip ${p.title}. Boleh konsultasi?`)}">${ico("whatsapp")}Mau seperti ini?</a>`;
     $("#dlive").onclick = () => { live = !live; const b = $("#dlive");
       $("#dshot").innerHTML = live ? `<iframe src="${esc(p.url)}" title="Preview ${esc(p.title)}" loading="lazy" referrerpolicy="no-referrer"></iframe>` : shotHtml(p);
       b.innerHTML = live ? ico("img") + "Lihat Screenshot" : ico("play") + "Preview Langsung"; };
@@ -164,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#points").innerHTML = CONFIG.points.map(t => `<li>${ico("check")}${esc(t)}</li>`).join("");
   $("#skills").innerHTML = CONFIG.skills.map(s => `<li>${esc(s)}</li>`).join("");
   $(".pbadge b").textContent = P.length;
+  if (CONFIG.photo) $("#photo .bcard").outerHTML = `<img class="pimg" src="${esc(CONFIG.photo)}" alt="Foto profil ${esc(CONFIG.name)}" width="400" height="400" loading="lazy">`;
 
   /* Proses */
   $("#steps").innerHTML = CONFIG.steps.map((s, i) => `<li class="spot rv" style="--d:${(i % 3) * .08}s"><span class="num">0${i + 1}</span><span class="ic">${ico(STEPI[i])}</span><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p></li>`).join("");
@@ -188,11 +204,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* Menu mobile */
   const menu = $("#menu"), burger = $("#burger");
-  const closeMenu = () => { menu.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); };
-  burger.onclick = () => { const o = menu.classList.toggle("open"); burger.setAttribute("aria-expanded", o); };
+  const closeMenu = () => { root.classList.remove("menu-open"); menu.classList.remove("open"); burger.setAttribute("aria-expanded", "false"); };
+  burger.onclick = () => { const o = menu.classList.toggle("open"); root.classList.toggle("menu-open", o); burger.setAttribute("aria-expanded", o); };
   menu.addEventListener("click", e => e.target.closest("a") && closeMenu());
   document.addEventListener("click", e => { if (menu.classList.contains("open") && !e.target.closest("#menu,#burger")) closeMenu(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
+
+  /* PWA install */
+  const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const instBtns = $$("#inst,#inst2"), ib = $("#ib"), ios = $("#ios");
+  const canInstall = () => !standalone && (deferredInstall || isIOS);
+  const syncInstall = () => { instBtns.forEach(b => b.hidden = !canInstall()); };
+  async function doInstall() {
+    if (deferredInstall) { deferredInstall.prompt(); try { await deferredInstall.userChoice; } catch (e) {} deferredInstall = null; syncInstall(); ib.hidden = true; }
+    else if (isIOS) { ib.hidden = true; ios.showModal(); }
+  }
+  instBtns.concat([$("#ibgo")]).forEach(b => b.addEventListener("click", doInstall));
+  let seen = 0; try { seen = +localStorage.getItem("ibx") || 0; } catch (e) {}
+  const maybeBanner = () => { if (!canInstall() || Date.now() - seen < 7 * 864e5) return; ib.hidden = false; };
+  $("#ibx").onclick = () => { ib.hidden = true; try { localStorage.setItem("ibx", Date.now()); } catch (e) {} };
+  $("#iosx").onclick = () => ios.close(); ios.addEventListener("click", e => { if (e.target === ios) ios.close(); });
+  if (isIOS) $("#ibgo").textContent = "Cara Install";
+  document.addEventListener("pwa-ready", () => { syncInstall(); setTimeout(maybeBanner, 6000); });
+  addEventListener("appinstalled", () => { deferredInstall = null; syncInstall(); ib.hidden = true; });
+  syncInstall(); if (isIOS) setTimeout(maybeBanner, 9000); else if (deferredInstall) setTimeout(maybeBanner, 6000);
 
   /* Scroll: tombol atas */
   const top = $("#top"); top.onclick = () => scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });

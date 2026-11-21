@@ -1,4 +1,4 @@
-# RAJIP DIGITAL
+# RAJIB DIGITAL
 Website portfolio & katalog jasa (HTML + CSS + JavaScript murni, tanpa build). Desain 2026: dark/light otomatis, glass navbar, bento layanan, portfolio dengan screenshot nyata + preview langsung.
 
 ## Cara pakai
@@ -14,8 +14,11 @@ Website portfolio & katalog jasa (HTML + CSS + JavaScript murni, tanpa build). D
 - `hero` : 3 slug project yang tampil di visual hero.
 - `services`, `skills`, `points`, `steps`.
 
-## Ganti foto profil
-Timpa `assets/profile.jpg` dengan foto Anda (rasio 1:1, minimal 400x400).
+## Foto profil (opsional)
+Bagian Tentang memakai kartu brand. Untuk foto sendiri: taruh di `assets/profile.jpg` lalu isi `photo: "assets/profile.jpg"` di CONFIG.
+
+## PWA (bisa di-install)
+`manifest.webmanifest`, `sw.js`, folder `icons/`. Setelah publish di HTTPS (GitHub Pages), tombol Install muncul di HP/PC. iPhone: Bagikan → Tambah ke Layar Utama. Jika file diubah, naikkan `VER` di `sw.js` (mis. rajib-v2) agar cache diperbarui.
 
 ## Setelah publish
 `og:image` / `og:url` di `index.html` sudah mengarah ke https://benyoriki.github.io/Digital/ — ganti jika domain berubah.
