@@ -42,8 +42,11 @@ const ICON = {
   gear: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',
   chart: '<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>',
   gem: '<path d="M6 4h12l4 6-10 11L2 10z"/>',
+  chat: '<path d="M4 5h16v11H9l-5 4z"/>', pencil: '<path d="M4 20l1-4L16 5l3 3L8 19z"/>', code: '<path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/>',
+  check: '<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>', rocket: '<path d="M12 3c4 2 6 6 5 11l-5 4-5-4c-1-5 1-9 5-11z"/><circle cx="12" cy="10" r="1.5"/>', headset: '<path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14h3v5H4zM17 14h3v5h-3z"/>',
   wrench: '<path d="M14 6a4 4 0 0 0 5 5l-9 9a2 2 0 0 1-3-3l9-9z"/>'
 };
+const STEPI = ["chat", "pencil", "code", "check", "rocket", "headset"];
 const svg = n => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[n]}</svg>`;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const waLink = m => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(m || CONFIG.defaultMsg)}`;
@@ -65,8 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#dx").onclick = () => dlg.close();
   dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
   $("#exp").textContent = CONFIG.experience;
-  $("#skills").innerHTML = CONFIG.skills.map(s => `<span>${esc(s)}</span>`).join("");
-  $("#steps").innerHTML = CONFIG.steps.map((s, i) => `<li class="card rv"><b>0${i + 1}</b><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p></li>`).join("");
+  $("#skills").innerHTML = CONFIG.skills.map(s => `<li><i>${esc(s.slice(0, 2))}</i>${esc(s)}</li>`).join("");
+  $("#steps").innerHTML = CONFIG.steps.map((s, i) => `<li class="card rv"><span class="ic">${svg(STEPI[i])}</span><b>0${i + 1}</b><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p></li>`).join("");
   const c = CONFIG.contacts, hrefs = { email: v => "mailto:" + v, instagram: v => "https://instagram.com/" + v.replace("@", ""), facebook: v => v, github: v => "https://github.com/" + v, website: v => v };
   const items = [["WhatsApp", "+" + CONFIG.whatsapp, waLink()], ...["email", "instagram", "facebook", "github", "website"].map(k => [k[0].toUpperCase() + k.slice(1), c[k], c[k] && hrefs[k](c[k])])];
   $("#contacts").innerHTML = items.map(([n, v, h]) => h ? `<a class="card ct rv" href="${esc(h)}" target="_blank" rel="noopener"><small>${n}</small><b>${esc(v)}</b></a>` : `<div class="card ct"><small>${n}</small><b class="mut">Belum diisi</b></div>`).join("");
@@ -84,3 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .1 }) : null;
   document.querySelectorAll(".rv").forEach(el => io ? io.observe(el) : el.classList.add("in"));
 });
+
+document.addEventListener("click", e => { const m = document.getElementById("menu"); if (m.classList.contains("open") && !e.target.closest("#menu,#burger")) { m.classList.remove("open"); document.getElementById("burger").setAttribute("aria-expanded", "false"); } });
+document.addEventListener("keydown", e => { if (e.key === "Escape") { document.getElementById("menu").classList.remove("open"); document.getElementById("burger").setAttribute("aria-expanded", "false"); } });
