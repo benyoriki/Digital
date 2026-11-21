@@ -180,7 +180,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* Scroll: tombol atas */
   const top = $("#top"); top.onclick = () => scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
-  addEventListener("scroll", () => top.classList.toggle("show", scrollY > 700), { passive: true });
+  const prog = $("#prog"); let tk = false;
+  addEventListener("scroll", () => { if (tk) return; tk = true; requestAnimationFrame(() => { tk = false; top.classList.toggle("show", scrollY > 700);
+    const h = document.documentElement.scrollHeight - innerHeight; prog.style.transform = `scaleX(${h > 0 ? Math.min(1, scrollY / h) : 0})`; }); }, { passive: true });
 
   /* Reveal + nav aktif */
   const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12, rootMargin: "0px 0px -6% 0px" }) : null;
