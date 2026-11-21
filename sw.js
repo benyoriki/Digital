@@ -1,5 +1,5 @@
 /* RAJIB DIGITAL — service worker (ringan): halaman utama bisa dibuka cepat & offline */
-const VER = "rajib-v1";
+const VER = "rajib-v2";
 const CORE = ["./", "index.html", "style.css", "script.js", "manifest.webmanifest", "favicon.png", "apple-touch-icon.png",
   "assets/logo-128.webp", "assets/logo-384.webp", "icons/icon-192.png", "icons/icon-512.png"];
 

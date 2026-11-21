@@ -39,6 +39,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"RAJIB DIGITAL","url":"https://benyoriki.github.io/Digital/","image":"https://benyoriki.github.io/Digital/preview.jpg","telephone":"+6287874637574","description":"Jasa pembuatan website, sistem informasi, dashboard dan solusi digital untuk bisnis.","areaServed":"ID","sameAs":[]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Berapa biaya pembuatan website?", "acceptedAnswer": {"@type": "Answer", "text": "Setiap bisnis punya kebutuhan berbeda, jadi biaya disusun sesuai fitur, kompleksitas, dan jenis project Anda, bukan paket seragam yang membuat Anda membayar fitur yang tidak dipakai. Ceritakan ide Anda lewat WhatsApp dan Anda akan menerima penawaran yang jelas sebelum pengerjaan dimulai. Konsultasi awal 100% gratis."}}, {"@type": "Question", "name": "Berapa lama website selesai dikerjakan?", "acceptedAnswer": {"@type": "Answer", "text": "Tergantung ruang lingkupnya. Website profil atau katalog umumnya lebih cepat, sedangkan sistem dengan dashboard, booking, atau database memerlukan tahapan yang lebih panjang. Estimasi waktu disepakati sejak awal, dan Anda bisa memantau perkembangannya di setiap tahap."}}, {"@type": "Question", "name": "Apakah website nyaman dibuka di HP?", "acceptedAnswer": {"@type": "Answer", "text": "Sangat nyaman. Setiap website dirancang mobile-first: tampil rapi di HP, tablet, dan desktop, ringan saat dibuka, dan tombolnya mudah disentuh. Ini penting karena sebagian besar calon pelanggan kini mencari bisnis lewat HP."}}, {"@type": "Question", "name": "Bisakah website dipasang seperti aplikasi di HP?", "acceptedAnswer": {"@type": "Answer", "text": "Bisa. Dengan teknologi PWA, website dapat dipasang ke layar utama HP lengkap dengan ikon sendiri, terbuka layaknya aplikasi, dan tetap bisa diakses saat koneksi lemah. Website RAJIB DIGITAL ini sendiri sudah mendukungnya: ketuk tombol Install untuk mencobanya."}}, {"@type": "Question", "name": "Jenis website apa saja yang bisa dibuat?", "acceptedAnswer": {"@type": "Answer", "text": "Website bisnis dan company profile, katalog produk, toko online, sistem booking dan antrean, sistem informasi, dashboard monitoring, hingga aplikasi web khusus. Lihat 19+ project nyata di bagian Portfolio, semuanya bisa dicoba langsung."}}, {"@type": "Question", "name": "Apakah bisa menambah fitur setelah website selesai?", "acceptedAnswer": {"@type": "Answer", "text": "Bisa. Tersedia layanan maintenance dan pengembangan untuk perbaikan, update konten, penambahan fitur, dan optimasi. Website Anda dibangun agar mudah berkembang mengikuti pertumbuhan bisnis."}}, {"@type": "Question", "name": "Bagaimana dengan domain dan hosting?", "acceptedAnswer": {"@type": "Answer", "text": "Website dipublikasikan hingga benar-benar siap digunakan. Opsi domain dan hosting dibahas bersama sesuai kebutuhan dan anggaran Anda, sehingga Anda tidak perlu bingung soal teknis."}}, {"@type": "Question", "name": "Bagaimana cara memulai?", "acceptedAnswer": {"@type": "Answer", "text": "Cukup tiga langkah: klik tombol WhatsApp, ceritakan kebutuhan dan target bisnis Anda, lalu kita susun rencana dan penawaran yang sesuai. Alur lengkapnya bisa dilihat di bagian Proses Kerja."}}]}</script>
 <script>
 (function(){var d=document.documentElement;d.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}
 if(!t)t=(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';d.dataset.theme=t;
@@ -49,15 +50,22 @@ var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light
 <body>
 <div class="ld" id="ld" role="status" aria-live="polite" aria-label="Memuat halaman">
   <div class="ld-glow" aria-hidden="true"></div>
+  <div class="ld-floor" aria-hidden="true"></div>
+  <i class="ld-pt" aria-hidden="true"></i>
+  <i class="ld-scan" aria-hidden="true"></i>
+  <span class="ld-c c1" aria-hidden="true"></span><span class="ld-c c2" aria-hidden="true"></span><span class="ld-c c3" aria-hidden="true"></span><span class="ld-c c4" aria-hidden="true"></span>
+  <div class="ld-hud" aria-hidden="true"><span>RAJIB DIGITAL</span><span>PWA READY</span></div>
   <div class="ld-in">
-    <div class="ld-logo"><i class="rg"></i><i class="rg r2"></i><img src="assets/logo-384.webp" alt="RAJIB DIGITAL" width="384" height="384"></div>
+    <div class="ld-logo"><i class="rg"></i><i class="rg r2"></i><i class="orb"></i><i class="orb o2"></i><img src="assets/logo-384.webp" alt="RAJIB DIGITAL" width="384" height="384"></div>
     <div class="ld-name">RAJIB DIGITAL</div>
     <div class="ld-tag">Digital Solutions for Modern Business</div>
+    <ul class="ld-steps" id="ldst" aria-hidden="true"><li>Tampilan</li><li>Portofolio</li><li>Layanan</li><li>Siap</li></ul>
     <div class="ld-bar"><i id="ldbar"></i></div>
     <div class="ld-meta"><span id="ldtx">Menyiapkan tampilan…</span><b id="ldn">0%</b></div>
   </div>
 </div>
 <div class="prog" id="prog"></div>
+<div class="cur" id="cur" aria-hidden="true"></div>
 <a class="skip" href="#main">Lewati ke konten</a>
 
 <header class="nav" id="nav">
@@ -82,7 +90,7 @@ var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light
   <div class="wrap hero-in">
     <div class="hero-txt">
       <span class="badge"><i class="pulse"></i>Menerima project baru</span>
-      <h1>Solusi Digital untuk Bisnis yang <em>Lebih Modern.</em></h1>
+      <h1>Solusi Digital untuk Bisnis yang <em class="rot" id="rot"><span class="on">Lebih Modern.</span><span>Lebih Menjual.</span><span>Lebih Cepat.</span></em></h1>
       <p>Saya membantu bisnis, usaha, dan organisasi membangun website, sistem informasi, serta solusi digital yang modern, praktis, dan sesuai kebutuhan.</p>
       <div class="btns"><a class="btn wa lg" data-wa href="#"><span data-icon="whatsapp"></span>Konsultasi Gratis</a><a class="btn ghost lg" href="#portfolio">Lihat Portfolio<span data-icon="arrow"></span></a></div>
       <ul class="stats" id="stats"></ul>
@@ -134,15 +142,10 @@ var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light
 </div></section>
 
 <!-- FAQ -->
-<section class="sec" id="faq"><div class="wrap">
-  <div class="head rv"><span class="eyebrow">FAQ</span><h2>Pertanyaan yang <em>sering ditanyakan.</em></h2></div>
-  <div class="faq rv">
-    <details><summary>Berapa biaya pembuatan website?</summary><p>Biaya menyesuaikan kebutuhan, fitur, kompleksitas, dan jenis project. Ceritakan ide Anda lewat WhatsApp untuk mendapatkan penawaran yang sesuai, konsultasi awalnya gratis.</p></details>
-    <details><summary>Apakah website bisa dibuka dengan nyaman di HP?</summary><p>Ya. Semua website dibuat responsive sehingga tampil rapi di HP, tablet, maupun desktop.</p></details>
-    <details><summary>Bisa menambah fitur setelah website selesai?</summary><p>Bisa. Tersedia layanan maintenance dan pengembangan untuk perbaikan, update, penambahan fitur, dan optimasi website yang sudah ada.</p></details>
-    <details><summary>Apakah website bisa dipasang seperti aplikasi di HP?</summary><p>Bisa. Website ini mendukung PWA: ketuk tombol Install, lalu ikon RAJIB DIGITAL muncul di layar utama dan terbuka layaknya aplikasi. Fitur yang sama bisa dipasang di website bisnis Anda.</p></details>
-    <details><summary>Bagaimana cara memulai?</summary><p>Klik tombol WhatsApp, ceritakan kebutuhan Anda, lalu kita lanjut ke tahap perencanaan. Alurnya bisa dilihat di bagian Proses Kerja.</p></details>
-  </div>
+<section class="sec" id="faq"><div class="wrap faqw">
+  <div class="head rv faqh"><span class="eyebrow">FAQ</span><h2>Jawaban sebelum Anda <em>memutuskan.</em></h2><p>Hal-hal yang paling sering ditanyakan calon klien, dijawab singkat dan jujur.</p></div>
+  <div class="faq rv" id="faqlist"><details open><summary>Berapa biaya pembuatan website?</summary><p>Setiap bisnis punya kebutuhan berbeda, jadi biaya disusun sesuai fitur, kompleksitas, dan jenis project Anda, bukan paket seragam yang membuat Anda membayar fitur yang tidak dipakai. Ceritakan ide Anda lewat WhatsApp dan Anda akan menerima penawaran yang jelas sebelum pengerjaan dimulai. Konsultasi awal 100% gratis.</p></details><details><summary>Berapa lama website selesai dikerjakan?</summary><p>Tergantung ruang lingkupnya. Website profil atau katalog umumnya lebih cepat, sedangkan sistem dengan dashboard, booking, atau database memerlukan tahapan yang lebih panjang. Estimasi waktu disepakati sejak awal, dan Anda bisa memantau perkembangannya di setiap tahap.</p></details><details><summary>Apakah website nyaman dibuka di HP?</summary><p>Sangat nyaman. Setiap website dirancang mobile-first: tampil rapi di HP, tablet, dan desktop, ringan saat dibuka, dan tombolnya mudah disentuh. Ini penting karena sebagian besar calon pelanggan kini mencari bisnis lewat HP.</p></details><details><summary>Bisakah website dipasang seperti aplikasi di HP?</summary><p>Bisa. Dengan teknologi PWA, website dapat dipasang ke layar utama HP lengkap dengan ikon sendiri, terbuka layaknya aplikasi, dan tetap bisa diakses saat koneksi lemah. Website RAJIB DIGITAL ini sendiri sudah mendukungnya: ketuk tombol Install untuk mencobanya.</p></details><details><summary>Jenis website apa saja yang bisa dibuat?</summary><p>Website bisnis dan company profile, katalog produk, toko online, sistem booking dan antrean, sistem informasi, dashboard monitoring, hingga aplikasi web khusus. Lihat 19+ project nyata di bagian Portfolio, semuanya bisa dicoba langsung.</p></details><details><summary>Apakah bisa menambah fitur setelah website selesai?</summary><p>Bisa. Tersedia layanan maintenance dan pengembangan untuk perbaikan, update konten, penambahan fitur, dan optimasi. Website Anda dibangun agar mudah berkembang mengikuti pertumbuhan bisnis.</p></details><details><summary>Bagaimana dengan domain dan hosting?</summary><p>Website dipublikasikan hingga benar-benar siap digunakan. Opsi domain dan hosting dibahas bersama sesuai kebutuhan dan anggaran Anda, sehingga Anda tidak perlu bingung soal teknis.</p></details><details><summary>Bagaimana cara memulai?</summary><p>Cukup tiga langkah: klik tombol WhatsApp, ceritakan kebutuhan dan target bisnis Anda, lalu kita susun rencana dan penawaran yang sesuai. Alur lengkapnya bisa dilihat di bagian Proses Kerja.</p></details></div>
+  <div class="faqcta rv"><div class="ic" data-icon="chat"></div><div><h3>Masih ragu atau punya ide khusus?</h3><p>Ceritakan kebutuhan Anda. Dapatkan arahan awal dan gambaran solusi, gratis dan tanpa komitmen.</p></div><a class="btn wa" data-wa href="#"><span data-icon="whatsapp"></span>Tanya via WhatsApp</a></div>
 </div></section>
 
 <!-- CTA -->

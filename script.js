@@ -5,11 +5,12 @@
   const bar = document.getElementById("ldbar"), num = document.getElementById("ldn"), tx = document.getElementById("ldtx");
   const msgs = [[0, "Menyiapkan tampilan…"], [30, "Memuat portofolio…"], [62, "Merapikan detail…"], [88, "Hampir siap…"], [100, "Selamat datang!"]];
   const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  const st = [...document.querySelectorAll("#ldst li")], TH = [0, 30, 62, 88];
   let last = -1;
   (function tick(now) {
     const k = Math.min(1, (now - t0) / DUR), p = Math.round(ease(k) * 100);
     bar.style.transform = "scaleX(" + ease(k) + ")";
-    if (p !== last) { last = p; num.textContent = p + "%"; for (const m of msgs) if (p >= m[0]) tx.textContent = m[1]; }
+    if (p !== last) { last = p; num.textContent = p + "%"; st.forEach((li, i) => { li.classList.toggle("done", i < 3 ? p >= TH[i + 1] : p >= 100); li.classList.toggle("on", p >= TH[i] && !(i < 3 ? p >= TH[i + 1] : p >= 100)); }); for (const m of msgs) if (p >= m[0]) tx.textContent = m[1]; }
     if (k < 1) requestAnimationFrame(tick);
     else { ld.classList.add("out"); setTimeout(() => ld.remove(), 800); }
   })(t0);
@@ -209,6 +210,21 @@ document.addEventListener("DOMContentLoaded", () => {
   menu.addEventListener("click", e => e.target.closest("a") && closeMenu());
   document.addEventListener("click", e => { if (menu.classList.contains("open") && !e.target.closest("#menu,#burger")) closeMenu(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
+
+  /* FAQ: satu jawaban terbuka */
+  $$("#faqlist details").forEach(d => d.addEventListener("toggle", () => { if (d.open) $$("#faqlist details").forEach(o => o !== d && (o.open = false)); }));
+
+  /* Kata berganti di hero */
+  const rot = $$("#rot span"); let ri = 0;
+  if (rot.length > 1 && !reduce) setInterval(() => { rot[ri].classList.remove("on"); ri = (ri + 1) % rot.length; rot[ri].classList.add("on"); }, 2600);
+
+  /* Hitung naik pada statistik */
+  setTimeout(() => $$("#stats b").forEach(b => { const m = b.textContent.match(/^(\d+)(.*)$/); if (!m || reduce) return; const n = +m[1], t0 = performance.now();
+    (function f(t) { const k = Math.min(1, (t - t0) / 1200); b.textContent = Math.round(n * (1 - Math.pow(1 - k, 3))) + m[2]; if (k < 1) requestAnimationFrame(f); })(t0); }), 3700);
+
+  /* Cahaya mengikuti kursor (hanya mouse) */
+  if (matchMedia("(hover:hover) and (pointer:fine)").matches && !reduce) { const cur = $("#cur"); let cx = 0, cy = 0, tk2 = false;
+    addEventListener("pointermove", e => { cx = e.clientX; cy = e.clientY; if (tk2) return; tk2 = true; requestAnimationFrame(() => { tk2 = false; cur.style.transform = `translate(${cx - 260}px,${cy - 260}px)`; cur.classList.add("on"); }); }, { passive: true }); }
 
   /* PWA install */
   const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
