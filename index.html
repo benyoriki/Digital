@@ -2,64 +2,132 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>RAJIP DIGITAL – Jasa Website & Sistem Informasi</title>
 <meta name="description" content="Rajip membantu bisnis membangun website, sistem informasi, dashboard, dan solusi digital yang modern, praktis, dan sesuai kebutuhan.">
-<meta name="theme-color" content="#0a1a4a">
+<meta name="theme-color" content="#060a1c">
 <meta property="og:type" content="website">
 <meta property="og:title" content="RAJIP DIGITAL – Solusi Digital untuk Bisnis yang Lebih Modern">
-<meta property="og:description" content="Jasa pembuatan website, sistem informasi, dan dashboard. Konsultasi gratis via WhatsApp.">
-<meta property="og:image" content="https://USERNAME.github.io/REPO/preview.jpg">
-<meta property="og:url" content="https://USERNAME.github.io/REPO/">
+<meta property="og:description" content="Jasa pembuatan website, sistem informasi, dan dashboard. 19 project nyata. Konsultasi gratis via WhatsApp.">
+<meta property="og:image" content="https://benyoriki.github.io/Digital/preview.jpg">
+<meta property="og:url" content="https://benyoriki.github.io/Digital/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="RAJIP DIGITAL">
 <meta name="twitter:description" content="Solusi digital untuk bisnis yang lebih modern.">
-<meta name="twitter:image" content="https://USERNAME.github.io/REPO/preview.jpg">
+<meta name="twitter:image" content="https://benyoriki.github.io/Digital/preview.jpg">
 <link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script>try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'light'}catch(e){}</script>
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}
+if(!t)t=(window.matchMedia&&matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark';d.dataset.theme=t;
+var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light'?'#f5f7fc':'#060a1c'})();
+</script>
 <script src="script.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Lewati ke konten</a>
-<header class="nav" id="nav"><div class="wrap nav-in">
-<a class="logo" href="#home" aria-label="RAJIP DIGITAL"><b>R</b><span>RAJIP DIGITAL<small>Digital Solutions for Modern Business</small></span></a>
-<nav id="menu" aria-label="Menu utama"><a href="#home">Home</a><a href="#layanan">Layanan</a><a href="#portfolio">Portfolio</a><a href="#tentang">Tentang</a><a href="#proses">Proses Kerja</a><a href="#kontak">Kontak</a></nav>
-<button class="icon-btn" id="theme" aria-label="Ganti mode terang/gelap"><span class="sun">☀</span><span class="moon">☾</span></button>
-<button class="icon-btn burger" id="burger" aria-label="Buka menu" aria-expanded="false"><i></i><i></i><i></i></button>
-</div></header>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="logo" href="#home" aria-label="RAJIP DIGITAL"><b>R</b><span>RAJIP DIGITAL<small>Digital Solutions for Modern Business</small></span></a>
+    <nav id="menu" aria-label="Menu utama">
+      <a href="#home">Home</a><a href="#layanan">Layanan</a><a href="#portfolio">Portfolio</a><a href="#tentang">Tentang</a><a href="#proses">Proses Kerja</a><a href="#kontak">Kontak</a>
+      <a class="menu-cta" data-wa href="#">Konsultasi Gratis</a>
+    </nav>
+    <a class="btn sm wa nav-cta" data-wa href="#">Konsultasi Gratis</a>
+    <button class="icon-btn" id="theme" aria-label="Ganti mode terang/gelap"><span class="sun" data-icon="sun"></span><span class="moon" data-icon="moon"></span></button>
+    <button class="icon-btn burger" id="burger" aria-label="Buka menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
 <main id="main">
-<section class="hero" id="home"><div class="grid-bg" aria-hidden="true"></div><div class="wrap hero-in">
-<div class="hero-txt">
-<h1>Solusi Digital untuk Bisnis yang <em>Lebih Modern.</em></h1>
-<p>Saya membantu bisnis, usaha, dan organisasi membangun website, sistem informasi, serta solusi digital yang modern, praktis, dan sesuai kebutuhan.</p>
-<div class="btns"><a class="btn wa" data-wa href="#">Konsultasi Gratis</a><a class="btn ghost" href="#portfolio">Lihat Portfolio</a></div>
-</div>
-<div class="vis" aria-hidden="true">
-<div class="laptop"><div class="scr"><div class="side"></div><div class="main"><div class="kpis"><i></i><i></i><i></i></div><div class="bars"><i style="--h:40%"></i><i style="--h:65%"></i><i style="--h:50%"></i><i style="--h:85%"></i><i style="--h:60%"></i><i style="--h:95%"></i></div></div></div></div>
-<div class="phone"><div class="pbar"></div><i></i><i></i><i></i></div>
-<span class="fl f1">&lt;/&gt;</span><span class="fl f2">▲ Dashboard</span><span class="fl f3">100% Responsive</span>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div class="hero-txt">
+      <span class="badge"><i class="pulse"></i>Menerima project baru</span>
+      <h1>Solusi Digital untuk Bisnis yang <em>Lebih Modern.</em></h1>
+      <p>Saya membantu bisnis, usaha, dan organisasi membangun website, sistem informasi, serta solusi digital yang modern, praktis, dan sesuai kebutuhan.</p>
+      <div class="btns"><a class="btn wa lg" data-wa href="#"><span data-icon="whatsapp"></span>Konsultasi Gratis</a><a class="btn ghost lg" href="#portfolio">Lihat Portfolio<span data-icon="arrow"></span></a></div>
+      <ul class="stats" id="stats"></ul>
+    </div>
+    <div class="vis" id="vis" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
+
+<!-- LAYANAN -->
+<section class="sec" id="layanan"><div class="wrap">
+  <div class="head rv"><span class="eyebrow">Layanan</span><h2>Dari website sederhana sampai <em>sistem lengkap.</em></h2><p>Apa pun skala bisnis Anda, ada solusi digital yang pas dan siap dipakai.</p></div>
+  <div class="bento" id="svc"></div>
+</div></section>
+
+<!-- PORTFOLIO -->
+<section class="sec alt" id="portfolio"><div class="wrap">
+  <div class="head rv"><span class="eyebrow">Hasil Karya Nyata</span><h2>Website yang sudah dibangun, <em>bisa dicoba langsung.</em></h2><p>Screenshot diambil dari website asli. Klik untuk melihat detail dan preview langsung.</p></div>
+  <div class="filters rv" id="flt" role="group" aria-label="Filter portfolio"></div>
+  <div class="grid pgrid" id="grid"></div>
+  <div class="more" id="moreWrap"><button class="btn ghost" id="moreBtn" aria-expanded="false"><span id="moreTx">Lihat Semua Proyek</span><span data-icon="chev"></span></button></div>
+</div></section>
+
+<!-- TENTANG -->
+<section class="sec" id="tentang"><div class="wrap about">
+  <div class="photo rv"><img src="assets/profile.jpg" alt="Foto profil Rajip" width="400" height="400" loading="lazy"><span class="pbadge"><b>19</b> proyek nyata</span></div>
+  <div class="rv">
+    <span class="eyebrow">Tentang</span>
+    <h2>Kenalan dengan <em>Rajip.</em></h2>
+    <p>Saya berfokus pada pengembangan website dan sistem digital yang dirancang untuk membantu bisnis, usaha, dan organisasi bekerja lebih efektif, tampil lebih profesional, serta memiliki solusi digital sesuai kebutuhan.</p>
+    <p class="mut" id="exp" hidden></p>
+    <ul class="points" id="points"></ul>
+    <h3>Teknologi &amp; Keahlian</h3>
+    <ul class="skills" id="skills"></ul>
+  </div>
+</div></section>
+
+<!-- PROSES -->
+<section class="sec alt" id="proses"><div class="wrap">
+  <div class="head rv"><span class="eyebrow">Proses Kerja</span><h2>Enam langkah jelas, <em>dari ide sampai siap pakai.</em></h2></div>
+  <ol class="steps" id="steps"></ol>
+</div></section>
+
+<!-- CTA -->
+<section class="sec cta-sec"><div class="wrap"><div class="cta rv">
+  <div class="aurora" aria-hidden="true"><i></i><i></i></div>
+  <h2>Setiap Bisnis Memiliki Kebutuhan Berbeda.</h2>
+  <p>Biaya pengerjaan menyesuaikan kebutuhan, fitur, kompleksitas, dan jenis project. Konsultasikan ide Anda terlebih dahulu untuk mendapatkan penawaran yang sesuai.</p>
+  <a class="btn wa lg" data-wa href="#"><span data-icon="whatsapp"></span>Konsultasi Gratis via WhatsApp</a>
 </div></div></section>
 
-<section class="sec" id="layanan"><div class="wrap"><div class="head"><h2>Layanan</h2><p>Dari website sederhana sampai sistem yang mengelola operasional bisnis Anda.</p></div><div class="grid g3" id="svc"></div></div></section>
-
-<section class="sec alt" id="portfolio"><div class="wrap"><div class="head"><h2>Hasil Karya Project</h2><p>Contoh project dan konsep yang dapat disesuaikan dengan kebutuhan Anda.</p></div>
-<div class="filters" id="flt" role="group" aria-label="Filter portfolio"></div><div class="grid g3" id="grid"></div></div></section>
-
-<section class="sec" id="tentang"><div class="wrap about">
-<img src="assets/profile.jpg" alt="Foto profil Rajip" width="400" height="400" loading="lazy">
-<div><h2>Kenalan dengan Rajip.</h2><p>Saya berfokus pada pengembangan website dan sistem digital yang dirancang untuk membantu bisnis, usaha, dan organisasi bekerja lebih efektif, tampil lebih profesional, serta memiliki solusi digital sesuai kebutuhan.</p>
-<p class="mut" id="exp"></p><h3>Teknologi &amp; Keahlian</h3><ul class="skills" id="skills"></ul></div></div></section>
-
-<section class="sec alt" id="proses"><div class="wrap"><div class="head"><h2>Proses Kerja</h2><p>Enam langkah jelas dari ide sampai website siap dipakai.</p></div><ol class="grid g3 steps" id="steps"></ol></div></section>
-
-<section class="sec"><div class="wrap cta"><h2>Setiap Bisnis Memiliki Kebutuhan Berbeda.</h2><p>Biaya pengerjaan menyesuaikan kebutuhan, fitur, kompleksitas, dan jenis project. Konsultasikan ide Anda terlebih dahulu untuk mendapatkan penawaran yang sesuai.</p><a class="btn wa" data-wa href="#">Konsultasi Gratis via WhatsApp</a></div></section>
-
-<section class="sec alt" id="kontak"><div class="wrap"><div class="head"><h2>Kontak</h2><p>Hubungi Rajip untuk diskusi kebutuhan project Anda.</p></div><div class="grid g3" id="contacts"></div></div></section>
+<!-- KONTAK -->
+<section class="sec" id="kontak"><div class="wrap">
+  <div class="head rv"><span class="eyebrow">Kontak</span><h2>Hubungi Rajip untuk <em>diskusi project Anda.</em></h2></div>
+  <div class="contacts" id="contacts"></div>
+</div></section>
 </main>
-<footer><div class="wrap foot"><div><strong>RAJIP DIGITAL</strong><p>Digital Solutions for Modern Business.</p></div><nav id="fnav"></nav><div id="fsoc"></div></div><p class="copy">© <span id="yr"></span> RAJIP DIGITAL. All rights reserved.</p></footer>
-<a class="fab" data-wa href="#" aria-label="Chat WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.5-4A8 8 0 1 1 8 18.5z"/></svg><span>WhatsApp</span></a>
-<button class="top" id="top" aria-label="Kembali ke atas">↑</button>
-<dialog id="dlg" aria-labelledby="dt"><button class="x" id="dx" aria-label="Tutup">✕</button><img id="di" alt="" width="800" height="500"><div class="dbody"><span class="tag" id="dl"></span><h3 id="dt"></h3><p id="dd"></p><div class="chips" id="dtech"></div><div class="btns" id="dbtn"></div></div></dialog>
+
+<footer><div class="wrap foot"><div><strong>RAJIP DIGITAL</strong><p>Digital Solutions for Modern Business.</p></div><nav id="fnav" aria-label="Menu footer"></nav><div id="fsoc"></div></div><p class="copy">© <span id="yr"></span> RAJIP DIGITAL. All rights reserved.</p></footer>
+
+<a class="fab" data-wa href="#" aria-label="Chat WhatsApp"><span data-icon="whatsapp"></span><b>WhatsApp</b></a>
+<button class="top" id="top" aria-label="Kembali ke atas"><span data-icon="up"></span></button>
+
+<dialog id="dlg" aria-labelledby="dt">
+  <button class="x" id="dx" aria-label="Tutup"><span data-icon="close"></span></button>
+  <div class="dshot" id="dshot"><img id="di" alt="" width="800" height="500"></div>
+  <div class="dbody">
+    <span class="tag" id="dl"></span>
+    <h3 id="dt"></h3>
+    <p id="dd"></p>
+    <div class="chips" id="dchips"></div>
+    <div class="dbtns" id="dbtn"></div>
+    <div class="dnav"><button id="dprev" aria-label="Project sebelumnya"><span data-icon="chev" class="l"></span>Sebelumnya</button><button id="dnext" aria-label="Project berikutnya">Berikutnya<span data-icon="chev"></span></button></div>
+  </div>
+</dialog>
 </body>
 </html>
