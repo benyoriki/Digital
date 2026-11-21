@@ -1,3 +1,19 @@
+/* ============ LOADING SCREEN (4 detik) ============ */
+(function () {
+  const ld = document.getElementById("ld"); if (!ld) return;
+  const DUR = 4000, t0 = performance.now();
+  const bar = document.getElementById("ldbar"), num = document.getElementById("ldn"), tx = document.getElementById("ldtx");
+  const msgs = [[0, "Menyiapkan tampilan…"], [30, "Memuat portofolio…"], [62, "Merapikan detail…"], [88, "Hampir siap…"], [100, "Selamat datang!"]];
+  const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  let last = -1;
+  (function tick(now) {
+    const k = Math.min(1, (now - t0) / DUR), p = Math.round(ease(k) * 100);
+    bar.style.transform = "scaleX(" + ease(k) + ")";
+    if (p !== last) { last = p; num.textContent = p + "%"; for (const m of msgs) if (p >= m[0]) tx.textContent = m[1]; }
+    if (k < 1) requestAnimationFrame(tick);
+    else { ld.classList.add("out"); setTimeout(() => ld.remove(), 800); }
+  })(t0);
+})();
 /* ============ KONFIGURASI — EDIT DI SINI ============ */
 const CONFIG = {
   brand: "RAJIP DIGITAL",
